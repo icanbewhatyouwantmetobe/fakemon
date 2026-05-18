@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fakémon Explorer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --tile: 32px;
+      --ui-bg: #111827;
+      --ui-fg: #e5e7eb;
+      --accent: #60a5fa;
+      --accent-2: #34d399;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #0b1020;
+      color: var(--ui-fg);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.4;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      grid-template-rows: auto 1fr;
+      height: 100vh;
+    }
+    header {
+      grid-column: 1 / span 2;
+      padding: 10px 14px;
+      background: #0f172a;
+      border-bottom: 1px solid #1f2937;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    header h1 {
+      font-size: 16px;
+      margin: 0;
+      letter-spacing: 0.4px;
+    }
+    header .hint {
+      color: #9ca3af;
+      font-size: 12px;
+    }
+    #game-wrap {
+      display: grid;
+      place-items: center;
+      padding: 12px;
+    }
+    #canvas {
+      image-rendering: pixelated;
+      border: 1px solid #1f2937;
+      background: #0a0f1f;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.45), inset 0 0 60px rgba(96,165,250,0.08);
+    }
+    aside {
+      width: 320px;
+      padding: 12px;
+      background: #0f172a;
+      border-left: 1px solid #1f2937;
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      gap: 12px;
+      overflow: auto;
+    }
+    .panel {
+      background: var(--ui-bg);
+      border: 1px solid #1f2937;
+      border-radius: 10px;
+      padding: 10px;
+    }
+    .panel h2 {
+      font-size: 14px;
+      margin: 0 0 8px;
+      color: #cbd5e1;
+    }
+    #encounters {
+      max-height: 160px;
+      overflow: auto;
+      font-size: 12px;
+      color: #cbd5e1;
+    }
+    .log-item {
+      padding: 4px 0;
+      border-bottom: 1px dashed #293241;
+    }
+    .bestiary-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+      font-size: 13px;
+    }
+    .be-card {
+      background: #0b1328;
+      border: 1px solid #1f2937;
+      border-radius: 8px;
+      padding: 8px;
+    }
+    .be-card h3 {
+      margin: 0 0 4px;
+      font-size: 13px;
+      color: var(--accent-2);
+      letter-spacing: 0.3px;
+    }
+    .be-meta {
+      color: #93c5fd;
+      font-size: 12px;
+    }
+    .be-desc {
+      color: #d1d5db;
+      font-size: 12px;
+      margin-top: 4px;
+    }
+    .pill {
+      display: inline-block;
+      padding: 2px 6px;
+      background: rgba(96,165,250,0.15);
+      color: #93c5fd;
+      border: 1px solid #1e3a8a;
+      border-radius: 999px;
+      font-size: 11px;
+      margin-right: 6px;
+    }
+    .controls {
+      font-size: 12px;
+      color: #9ca3af;
+    }
+    .btn {
+      display: inline-block;
+      border: 1px solid #1f2937;
+      background: #0b1328;
+      color: #e5e7eb;
+      border-radius: 8px;
+      padding: 6px 10px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    .btn:hover {
+      border-color: #334155;
+      background: #0f1b36;
+    }
+    .inline {
+      display: inline-flex;
+      gap: 6px;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Fakémon Explorer</h1>
+    <span class="hint">Explore and discover your favorite Fakémon!</span>
+  </header>
+  <div id="game-wrap">
+    <canvas id="canvas" width="320" height="320"></canvas>
+  </div>
+  <aside>
+    <div class="panel">
+      <h2>Encounters</h2>
+      <div id="encounters">
+        <!-- Encounter log goes here -->
+      </div>
+    </div>
+    <div class="panel">
+      <h2>Bestiary</h2>
+      <div class="bestiary-list">
+        <!-- Bestiary entries go here -->
+      </div>
+    </div>
+    <div class="panel controls">
+      <button class="btn">Start Exploring</button>
+    </div>
+  </aside>
+</body>
+</html>
